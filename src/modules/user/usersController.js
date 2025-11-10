@@ -3,6 +3,7 @@
  */
 import sha1 from "sha1"; // SHA-1 hashing library for password encryption
 import userModel from "./user.model.js"; // User model for database interactions
+import walletModel from "../wallet/wallet.model.js";
 
 /**
  * Define a class to manage user-related operations
@@ -35,7 +36,12 @@ class UsersController {
       } else {
         // Create a new user
         const newUser = await userModel.create(req.body);
-        const response = { user: newUser };
+        const wallet = await walletModel.create({ user_id: newUser._id });
+        const user = await userModel.findByIdAndUpdate(newUser._id,
+                                      { $set: { wallet_id: wallet._id} },
+                                      { new: true });
+        // console.log(wallet);
+        const response = { user: user };
         return res.status(201).json(response);
       }
     } catch (error) {
@@ -83,7 +89,7 @@ class UsersController {
   async getUserBy(req, res) {
     const key = req.params;
     console.log(key);
-    const user = await userModel.findOne({ key });
+    const user = await userModel.findOne(key);
     if (!user) {
       return res.status(404).json({ result: "No user found!" });
     }

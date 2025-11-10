@@ -1,4 +1,4 @@
-/**
+ /**
  * Import required modules
  */
 import express from "express"; // Express.js framework
@@ -30,7 +30,7 @@ usersRouter.post("/", usersController.addUser); // Create a new user
  *                 $ref: '#../swagger/swaggerSchema.User'
  */
 usersRouter.get("/", usersController.getAllUsers); // Retrieve all users
-usersRouter.get("/:id", usersController.getUserBy); // Retrieve a user by ID
+usersRouter.get("/:_id", usersController.getUserBy); // Retrieve a user by ID
 usersRouter.patch("/:id", usersController.updateUser); // Update a user by ID
 usersRouter.delete("/:id", usersController.deleteUser); // Delete a user by ID
 usersRouter.delete("/", usersController.deleteAll); // Delete all users

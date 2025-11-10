@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="Buraque — Telecom project" />
+    <title>Buraque — Telecom</title>
+
+    <!-- replace with your stylesheet -->
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <header>
+        <h1>Buraque</h1>
+        <p>Telecom project</p>
+    </header>
+
+    <nav aria-label="Main">
+        <!-- navigation links -->
+        <a href="#overview">Overview</a>
+        <a href="#features">Features</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <main>
+        <section id="overview">
+            <h2>Overview</h2>
+            <p>Start building your application here.</p>
+        </section>
+
+        <section>
+            <form action="http://localhost:5000/api/wallet/load_wallet/" method="post">
+                <label for="wallet_address">Wallet Address:</label>
+                <input type="text" id="wallet_address" name="wallet_address" required />
+                <button type="submit">Load Wallet</button>
+            </form>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <p>&copy; <span id="year"></span> Buraque</p>
+    </footer>
+
+    <script>
+        // minimal script: set current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

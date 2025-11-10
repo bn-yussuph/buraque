@@ -45,6 +45,10 @@ const userSchema = new Schema({
     enum: ['admin', 'user'], // Allowable values for the role field
     default: 'user', // Default value for the role field
   },
+  wallet_id: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'wallet'
+  },
 
   /**
    * User address
@@ -87,6 +91,11 @@ const userSchema = new Schema({
  */
 userSchema.pre("save", function () {
   this.password = sha1(this.password);
+});
+
+userSchema.pre("find", function (next) {
+  this.populate('wallet_id', 'balance');
+  next();
 });
 
 /**

@@ -2,6 +2,7 @@ import swaggerUi from "swagger-ui-express";
 import authRouter from "./modules/auth/authRouter.js";
 import usersRouter from "./modules/user/usersRouter.js";
 import authController from "./modules/auth/authController.js";
+import walletRoutes from "./modules/wallet/wallet.routes.js";
 
 /**
  * Bootstrap function to configure Express app routes
@@ -13,6 +14,7 @@ const bootstrap = (app) => {
    * Configure API routes
    */
   app.use('/api/auth', authRouter);
+  app.use('/api/wallet', walletRoutes);
   app.use('/api/users', [authController.loggedIn], usersRouter);
 
   // console.log(swagger);
