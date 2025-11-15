@@ -19,11 +19,11 @@ const transactionSchema = new Schema({
   },
   transaction_type: {
     type: String,
-    enum: ['CREDIT', 'DEBIT'],
+    enum: ['CREDIT', 'DEBIT','WALLET_RECHARGE', 'REFUND'],
   },
   status: {
     type: String,
-    enum: ['INITIATED', 'PENDING', 'COMPLETED', 'REJECTED'],
+    enum: ['INITIATED', 'PENDING', 'COMPLETED', 'FAILED', 'REJECTED'],
     default: 'INITIATED'
   },
   reference_id: {
